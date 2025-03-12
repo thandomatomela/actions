@@ -1,0 +1,19 @@
+name: Super-Linter
+
+on: push
+
+jobs:
+  super-lint:
+    name: Lint code base
+    runs-on: ubuntu-latest  # Self-hosted runner named "roadrunner"
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Super-Linter
+        uses: actions/setup-node@v4
+        env: 
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
